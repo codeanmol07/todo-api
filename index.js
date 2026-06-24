@@ -3,12 +3,13 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json()); // lets us read JSON sent in requests
-
-// Temporary in-memory storage (resets every time server restarts)
+app.get('/', (req, res) => {
+  res.send('Welcome to the Todo API!');
+});
+//temporary in-memory storage (resets every time server restarts)
 let todos = [
   { id: 1, task: "Learn Express", done: false }
 ];
-
 // GET all todos
 app.get('/todos', (req, res) => {
   res.json(todos);
